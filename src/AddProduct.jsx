@@ -13,7 +13,7 @@ function AddProduct() {
   const addProduct = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/add-product",
+        "https://inventory-management-backend-001z.onrender.com/add-product",
         {
           method: "POST",
           headers: {
