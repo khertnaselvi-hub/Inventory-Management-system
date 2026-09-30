@@ -13,7 +13,7 @@ function AddProduct() {
   const addProduct = async () => {
     try {
       const response = await fetch(
-        "https://inventory-management-backend-001z.onrender.com/add-product",
+        "https://inventory-management-backend-1-eco4.onrender.com/add-product",
         {
           method: "POST",
           headers: {

@@ -24,7 +24,7 @@ function App() {
   const loadDashboard = async () => {
     try {
       const response = await fetch(
-        "https://inventory-management-backend-001z.onrender.com/dashboard"
+        "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/dashboard"
       );
 
       const data = await response.json();
@@ -69,7 +69,7 @@ function App() {
           onClick={async () => {
 
             const response = await fetch(
-              "https://inventory-management-backend-001z.onrender.com/products"
+              "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/products"
             );
 
             const data = await response.json();
@@ -131,7 +131,7 @@ function App() {
           onClick={async () => {
 
             const response = await fetch(
-              "https://inventory-management-backend-001z.onrender.com/low-stock"
+              "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/low-stock"
             );
 
             const data = await response.json();
@@ -212,7 +212,7 @@ function App() {
                 ).value;
 
               const response = await fetch(
-                "https://inventory-management-backend-001z.onrender.com/update-product",
+                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/update-product",
                 {
                   method: "PUT",
 
@@ -277,7 +277,7 @@ function App() {
                 ).value;
 
               const response = await fetch(
-                "https://inventory-management-backend-001z.onrender.com/delete-product",
+                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/delete-product",
                 {
                   method: "DELETE",
 
@@ -349,7 +349,7 @@ function App() {
                 ).value;
 
               const response = await fetch(
-                "https://inventory-management-backend-001z.onrender.com/update-stock",
+                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/update-stock",
                 {
                   method: "PUT",
 
