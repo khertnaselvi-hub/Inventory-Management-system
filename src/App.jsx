@@ -69,7 +69,7 @@ function App() {
           onClick={async () => {
 
             const response = await fetch(
-              "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/products"
+              "https://inventory-management-backend-1-eco4.onrender.com/products"
             );
 
             const data = await response.json();
