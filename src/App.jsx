@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import AddProduct from "./AddProduct";
@@ -24,7 +23,7 @@ function App() {
   const loadDashboard = async () => {
     try {
       const response = await fetch(
-        "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/dashboard"
+        "https://inventory-management-backend-1-eco4.onrender.com/dashboard"
       );
 
       const data = await response.json();
@@ -67,16 +66,20 @@ function App() {
         {/* VIEW PRODUCTS */}
         <button
           onClick={async () => {
+            try {
+              const response = await fetch(
+                "https://inventory-management-backend-1-eco4.onrender.com/products"
+              );
 
-            const response = await fetch(
-              "https://inventory-management-backend-1-eco4.onrender.com/products"
-            );
+              const data = await response.json();
 
-            const data = await response.json();
+              setProducts(data);
+              setSearchTerm("");
 
-            setProducts(data);
-            setSearchTerm("");
-
+            } catch (error) {
+              alert("Unable to load products");
+              console.error(error);
+            }
           }}
         >
           View Products
@@ -129,16 +132,20 @@ function App() {
         {/* LOW STOCK */}
         <button
           onClick={async () => {
+            try {
+              const response = await fetch(
+                "https://inventory-management-backend-1-eco4.onrender.com/low-stock"
+              );
 
-            const response = await fetch(
-              "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/low-stock"
-            );
+              const data = await response.json();
 
-            const data = await response.json();
+              setProducts(data);
+              setSearchTerm("");
 
-            setProducts(data);
-            setSearchTerm("");
-
+            } catch (error) {
+              alert("Unable to load low stock products");
+              console.error(error);
+            }
           }}
         >
           Low Stock
@@ -211,33 +218,39 @@ function App() {
                   "updateQuantity"
                 ).value;
 
-              const response = await fetch(
-                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/update-product",
-                {
-                  method: "PUT",
+              try {
+                const response = await fetch(
+                  "https://inventory-management-backend-1-eco4.onrender.com/update-product",
+                  {
+                    method: "PUT",
 
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
 
-                  body: JSON.stringify({
-                    id,
-                    product,
-                    category,
-                    price,
-                    quantity
-                  })
-                }
-              );
+                    body: JSON.stringify({
+                      id,
+                      product,
+                      category,
+                      price,
+                      quantity
+                    })
+                  }
+                );
 
-              const result =
-                await response.text();
+                const result =
+                  await response.text();
 
-              alert(result);
+                alert(result);
 
-              setShowUpdateForm(false);
+                setShowUpdateForm(false);
 
-              loadDashboard();
+                loadDashboard();
+
+              } catch (error) {
+                alert("Unable to connect to backend");
+                console.error(error);
+              }
 
             }}
           >
@@ -276,29 +289,35 @@ function App() {
                   "deleteId"
                 ).value;
 
-              const response = await fetch(
-                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/delete-product",
-                {
-                  method: "DELETE",
+              try {
+                const response = await fetch(
+                  "https://inventory-management-backend-1-eco4.onrender.com/delete-product",
+                  {
+                    method: "DELETE",
 
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
 
-                  body: JSON.stringify({
-                    id
-                  })
-                }
-              );
+                    body: JSON.stringify({
+                      id
+                    })
+                  }
+                );
 
-              const result =
-                await response.text();
+                const result =
+                  await response.text();
 
-              alert(result);
+                alert(result);
 
-              setShowDeleteForm(false);
+                setShowDeleteForm(false);
 
-              loadDashboard();
+                loadDashboard();
+
+              } catch (error) {
+                alert("Unable to connect to backend");
+                console.error(error);
+              }
 
             }}
           >
@@ -348,30 +367,36 @@ function App() {
                   "stockQuantity"
                 ).value;
 
-              const response = await fetch(
-                "https://inventory-management-backend-1-eco4.onrender.comagement-backend-001z.onrender.com/update-stock",
-                {
-                  method: "PUT",
+              try {
+                const response = await fetch(
+                  "https://inventory-management-backend-1-eco4.onrender.com/update-stock",
+                  {
+                    method: "PUT",
 
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
 
-                  body: JSON.stringify({
-                    id,
-                    quantity
-                  })
-                }
-              );
+                    body: JSON.stringify({
+                      id,
+                      quantity
+                    })
+                  }
+                );
 
-              const result =
-                await response.text();
+                const result =
+                  await response.text();
 
-              alert(result);
+                alert(result);
 
-              setShowStockForm(false);
+                setShowStockForm(false);
 
-              loadDashboard();
+                loadDashboard();
+
+              } catch (error) {
+                alert("Unable to connect to backend");
+                console.error(error);
+              }
 
             }}
           >
@@ -513,7 +538,6 @@ function App() {
       </Routes>
 
     </BrowserRouter>
-
   );
 }
 
